@@ -30,6 +30,22 @@
         "createdAt": "2014-03-02T02:00:20.434Z",
         "updatedAt": "2014-03-02T02:00:20.434Z",
         "id": 4
+      },
+      {
+        "name": "Ezequely Freitas",
+        "game": "dotaaa",
+        "pontuacao": 1234,
+        "createdAt": "2014-03-02T14:32:00.824Z",
+        "updatedAt": "2014-03-02T14:32:00.824Z",
+        "id": 5
+      },
+      {
+        "name": "Ezequely Freitas",
+        "game": "dotaaa",
+        "pontuacao": 1234,
+        "createdAt": "2014-03-02T15:04:11.018Z",
+        "updatedAt": "2014-03-02T15:04:11.018Z",
+        "id": 6
       }
     ],
     "friends": [
@@ -106,7 +122,7 @@
   },
   "counters": {
     "rank": {
-      "id": 4
+      "id": 6
     },
     "friends": {
       "id": 2

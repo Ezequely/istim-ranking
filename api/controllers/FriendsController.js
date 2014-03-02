@@ -17,14 +17,22 @@
 
 module.exports = {
     
-  
+	'new': function (req, res) {
+		res.view();
+	},
 
-
-  /**
-   * Overrides for the settings in `config/controllers.js`
-   * (specific to FriendsController)
-   */
-  _config: {}
-
-  
+	create: function (req, res, next) {	
+		
+		var friendObj = {
+			name: req.param('name'),
+			game: req.param('game'),
+			pontuacao: req.param('pontuacao')
+    	}
+		Friend.create( friendObj, function friendCreated (err, friend) {
+			
+			if (err) return res.redirect('friend/new');
+			
+			res.json(friend);
+		});
+	}
 };

@@ -45,3 +45,26 @@ body {
   margin-bottom: 15px;
   padding: 7px 9px;
 }
+.form-friend {
+  max-width: 30%;
+  padding: 19px 29px 29px;
+  margin: 0 auto 20px;
+  margin-top: 20px;
+  background-color: #ececec;
+  border: 1px solid #9ec03b;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+}
+.form-friend h2 {
+  text-align: center;
+  margin-top: 0px;
+}
+.form-friend .form-friend input[type="text"],
+.form-friend .form-friend input[type="text"],
+.form-friend .form-friend input[type="number"] {
+  font-size: 16px;
+  height: auto;
+  margin-bottom: 15px;
+  padding: 7px 9px;
+}

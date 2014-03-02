@@ -8,12 +8,30 @@
 
 module.exports = {
 
+  schema: true,
+
   attributes: {
   	
-  	/* e.g.
-  	nickname: 'string'
-  	*/
-    
+  	name: {
+  		type: 'string',
+  		required: true
+  	},
+
+  	game: {
+  		type: 'string',
+  		unique: true,
+  		required: true
+  	},
+
+  	pontuacao: {
+  		type: 'integer',
+  		required: true
+  	},
+
+    toJSON: function(){
+      var obj = this.toObject();
+      return obj;
+    }
   }
 
 };

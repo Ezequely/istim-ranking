@@ -23,13 +23,15 @@ module.exports = {
 
 	create: function (req, res, next) {
 		
-		Rank.create( req.params.all(), function rankCreated (err, rank) {
+		var rankObj = {
+			name: req.param('name'),
+			game: req.param('game'),
+			pontuacao: req.param('pontuacao')
+    	}
+		Rank.create( rankObj, function rankCreated (err, rank) {
 			
-			if (err) {
-				console.log(err);
-
-				return res.redirect('rank/new');
-			}
+			if (err) return res.redirect('rank/new');
+			
 			res.json(rank);
 		});
 	}

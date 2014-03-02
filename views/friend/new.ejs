@@ -1,0 +1,20 @@
+<form action="/friend/create" method="POST" class="form-friend">
+	<h2 class="form-friend-heading">Create an Friend</h2>
+
+	<div class="control-group">
+		<input type="text" class="form-control" placeholder="your name" name="name">	
+	</div>
+	
+	<div class="control-group">
+		<input type="text" class="form-control" placeholder="your game" game="game">
+	</div>
+	
+	<div class="control-group">
+		<input type="number" class="form-control" placeholder="your point" pontuacao="pontuacao">			
+		<br />
+	</div>
+	
+	<input type="submit" class="btn btn-lg btn-primary btn-block" value="Create Friend"/>
+
+	<input type="hidden" name="_csrf" value="<%= _csrf %>" />
+</form>
