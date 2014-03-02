@@ -1,0 +1,115 @@
+{
+  "data": {
+    "rank": [
+      {
+        "name": "Ezequely Freitas",
+        "createdAt": "2014-03-02T01:47:02.867Z",
+        "updatedAt": "2014-03-02T01:47:02.867Z",
+        "id": 1
+      },
+      {
+        "name": "Ezequely Freitas",
+        "game": "dota",
+        "pontuacao": 1000,
+        "createdAt": "2014-03-02T01:59:36.754Z",
+        "updatedAt": "2014-03-02T01:59:36.754Z",
+        "id": 2
+      },
+      {
+        "name": "Ezequely Freitas",
+        "game": "dota",
+        "pontuacao": 2000,
+        "createdAt": "2014-03-02T02:00:09.600Z",
+        "updatedAt": "2014-03-02T02:00:09.600Z",
+        "id": 3
+      },
+      {
+        "name": "Ezequely Freitas",
+        "game": "dotas",
+        "pontuacao": 2000,
+        "createdAt": "2014-03-02T02:00:20.434Z",
+        "updatedAt": "2014-03-02T02:00:20.434Z",
+        "id": 4
+      }
+    ],
+    "friends": [
+      {
+        "name": "Ezequely Freitas",
+        "createdAt": "2014-03-02T01:48:58.236Z",
+        "updatedAt": "2014-03-02T01:48:58.236Z",
+        "id": 1
+      },
+      {
+        "name": "Ezequely Freitas",
+        "createdAt": "2014-03-02T01:57:47.432Z",
+        "updatedAt": "2014-03-02T01:57:47.432Z",
+        "id": 2
+      }
+    ]
+  },
+  "schema": {
+    "rank": {
+      "name": {
+        "type": "string"
+      },
+      "pontuacao": {
+        "type": "integer"
+      },
+      "game": {
+        "type": "string"
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "defaultsTo": "AUTO_INCREMENT",
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime",
+        "default": "NOW"
+      },
+      "updatedAt": {
+        "type": "datetime",
+        "default": "NOW"
+      }
+    },
+    "friends": {
+      "user": {
+        "type": "string"
+      },
+      "name": {
+        "type": "string"
+      },
+      "game": {
+        "type": "string"
+      },
+      "pontuacao": {
+        "type": "integer"
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "defaultsTo": "AUTO_INCREMENT",
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime",
+        "default": "NOW"
+      },
+      "updatedAt": {
+        "type": "datetime",
+        "default": "NOW"
+      }
+    }
+  },
+  "counters": {
+    "rank": {
+      "id": 4
+    },
+    "friends": {
+      "id": 2
+    }
+  }
+}
