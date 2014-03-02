@@ -25,8 +25,11 @@ module.exports = {
 		
 		Rank.create( req.params.all(), function rankCreated (err, rank) {
 			
-			if (err) return next(err);
+			if (err) {
+				console.log(err);
 
+				return res.redirect('rank/new');
+			}
 			res.json(rank);
 		});
 	}
