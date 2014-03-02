@@ -1,1 +1,23 @@
-<h1>Novo Ranking</h1>
+<form action="/rank/create" method="POST" class="form-signin">
+	<h2 class="form-signin-heading">Create an Rank</h2>
+
+	<div class="control-group">
+		<input type="text" class="form-control" placeholder="your name" name="name">	
+	</div>
+	
+	<div class="control-group">
+		<input type="text" class="form-control" placeholder="your game" game="game">
+	</div>
+	
+	<div class="control-group">
+		<input type="number" class="form-control" placeholder="your point" pontuacao="pontuacao">			
+		<br />
+	</div>
+	
+
+
+
+	<input type="submit" class="btn btn-lg btn-primary btn-block" value="Create Rank"/>
+
+	<input type="hidden" name="_csrf" value="<%= _csrf %>" />
+</form>

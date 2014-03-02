@@ -24,7 +24,12 @@ module.exports = {
   	pontuacao: {
   		type: 'integer',
   		required: true
-  	}
+  	},
+
+    toJSON: function(){
+      var obj = this.toObject();
+      return obj;
+    }
   }
 
 };

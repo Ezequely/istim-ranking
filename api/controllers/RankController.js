@@ -19,5 +19,15 @@ module.exports = {
     
 	'new': function (req, res) {
 		res.view();
+	},
+
+	create: function (req, res, next) {
+		
+		Rank.create( req.params.all(), function rankCreated (err, rank) {
+			
+			if (err) return next(err);
+
+			res.json(rank);
+		});
 	}
 };
