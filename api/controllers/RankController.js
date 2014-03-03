@@ -33,8 +33,20 @@ module.exports = {
 
 				return res.redirect('/rank/new');
 			};
+
+
 			
-			res.json(rank);
+			res.redirect('rank/show'+rank.id);
+		});
+	},
+
+	show: function(req, res, next) {
+		Rank.findOne(req.param('id'), function foundRank (err, rank) {
+			if (err) return next(err);
+			if (!rank) return next();
+			res.view({
+				rank: rank
+			});
 		});
 	}
 };
