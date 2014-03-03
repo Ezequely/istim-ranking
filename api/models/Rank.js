@@ -19,19 +19,19 @@ module.exports = {
 
   	game: {
   		type: 'string',
-  		unique: true,
+  		//unique: true,
   		required: true
   	},
 
   	pontuacao: {
   		type: 'integer',
   		required: true
-  	},
+  	}
 
-    toJSON: function(){
+    /*toJSON: function(){
       var obj = this.toObject();
       return obj;
-    }
+    }*/
   }
 
 };

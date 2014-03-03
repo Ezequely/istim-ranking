@@ -1,20 +1,27 @@
 <form action="/rank/create" method="POST" class="form-signin">
 	<h2 class="form-signin-heading">Create an Rank</h2>
 
+	<% if(flash && flash.err) { %>
+	  <u1 class="alert alert-success">
+	<% Object.keys(flash.err).forEach(function(error) { %>
+	  <li><%- JSON.stringify(flash.err[error]) %></li>
+	<% }) %>
+	</u1>
+	<% } %>
+
 	<div class="control-group">
-		<input type="text" class="form-control" placeholder="your name" name="name">	
+	<input type="text" class="form-control" placeholder="your name" name="name">
 	</div>
 	
 	<div class="control-group">
-		<input type="text" class="form-control" placeholder="your game" game="game">
+	<input type="text" class="form-control" placeholder="your game" game="game">
 	</div>
 	
 	<div class="control-group">
-		<input type="number" class="form-control" placeholder="your point" pontuacao="pontuacao">			
-		<br />
+	<input type="number" class="form-control" placeholder="your point" pontuacao="pontuacao">
+	<br />
 	</div>
 	
 	<input type="submit" class="btn btn-lg btn-primary btn-block" value="Create Rank"/>
-
 	<input type="hidden" name="_csrf" value="<%= _csrf %>" />
 </form>
