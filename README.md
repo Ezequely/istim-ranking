@@ -1,5 +1,4 @@
 # istim-ranking
-================
 
 ## Services
 ### Rank
