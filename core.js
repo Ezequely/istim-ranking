@@ -1,26 +1,16 @@
-var ranks = angular.module('ranks', []);
+var profPage = angular.module('profPage', []);
 
 function mainController($scope, $http) {
 	$scope.formData = {};
 
-	$http.get('http://istim-ranking.nodejitsu.com/rank/todos')
-		.success(function(data);
-		console.log(data);
-	})
+	// when landing on the page, get all publications and show them
+	$http.get('http://istim-ranking.nodejitsu.com/rank')
+		.success(function(data) {
+			$scope.pubs = data;
+			console.log(data);
+		})
 		.error(function(data) {
-			console.log('error: ' + data);
+			console.log('Error: ' + data);
 		});
 
-		// when submitting the add form, send the text to the node API
-	$scope.createTodo = function() {
-		$http.post('/rank/create', $scope.formData)
-			.success(function(data) {
-				$scope.formData = {}; // clear the form so our user is ready to enter another
-				$scope.todos = data;
-				console.log(data);
-			})
-			.error(function(data) {
-				console.log('Error: ' + data);
-			});
-	};
 }
