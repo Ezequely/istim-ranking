@@ -3,7 +3,7 @@ var ranks = angular.module('ranks', []);
 function mainController($scope, $http) {
 	$scope.formData = {};
 
-	$http.get('localhost:1337/rank')
+	$http.get('http://istim-ranking.nodejitsu.com/rank/todos')
 		.success(function(data);
 		console.log(data);
 	})
