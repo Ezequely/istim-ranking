@@ -21,18 +21,32 @@ module.exports = {
 		res.view();
 	},
 
-	create: function (req, res, next) {	
+	create: function (req, res, next) {
 		
-		var friendObj = {
-			name: req.param('name'),
-			game: req.param('game'),
-			pontuacao: req.param('pontuacao')
-    	}
-		Friend.create( friendObj, function friendCreated (err, friend) {
+		Friends.create( req.params.all(), function friendsCreated (err, friends) {
 			
-			if (err) return res.redirect('friend/new');
+			if (err) {
+				console.log(err);
+				req.session.flash = {
+					err: err
+				}
+
+				return res.redirect('/friends/new');
+			};
+
+
 			
-			res.json(friend);
+			res.redirect('friends/show'+friends.id);
+		});
+	},
+
+	show: function(req, res, next) {
+		Friends.findOne(req.param('id'), function foundfriends (err, friends) {
+			if (err) return next(err);
+			if (!friends) return next();
+			res.view({
+				friends: friends
+			});
 		});
 	}
 };

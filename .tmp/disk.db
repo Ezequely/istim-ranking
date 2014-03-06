@@ -17,14 +17,6 @@
       },
       {
         "name": "Ezequely Freitas",
-        "game": "dota",
-        "pontuacao": 2000,
-        "createdAt": "2014-03-02T02:00:09.600Z",
-        "updatedAt": "2014-03-02T02:00:09.600Z",
-        "id": 3
-      },
-      {
-        "name": "Ezequely Freitas",
         "game": "dotas",
         "pontuacao": 2000,
         "createdAt": "2014-03-02T02:00:20.434Z",
@@ -46,6 +38,14 @@
         "createdAt": "2014-03-02T15:04:11.018Z",
         "updatedAt": "2014-03-02T15:04:11.018Z",
         "id": 6
+      },
+      {
+        "name": "novo jogador",
+        "game": "toto toto",
+        "pontuacao": 12340,
+        "createdAt": "2014-03-06T19:27:10.415Z",
+        "updatedAt": "2014-03-06T19:27:10.415Z",
+        "id": 7
       }
     ],
     "friends": [
@@ -56,10 +56,12 @@
         "id": 1
       },
       {
-        "name": "Ezequely Freitas",
-        "createdAt": "2014-03-02T01:57:47.432Z",
-        "updatedAt": "2014-03-02T01:57:47.432Z",
-        "id": 2
+        "name": "novo cadastro",
+        "game": "toto",
+        "pontuacao": 3456,
+        "createdAt": "2014-03-06T19:31:10.075Z",
+        "updatedAt": "2014-03-06T19:31:10.075Z",
+        "id": 3
       }
     ]
   },
@@ -122,10 +124,10 @@
   },
   "counters": {
     "rank": {
-      "id": 6
+      "id": 7
     },
     "friends": {
-      "id": 2
+      "id": 3
     }
   }
 }
