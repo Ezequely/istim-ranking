@@ -40,30 +40,12 @@
 				<!-- LOOP OVER THE TODOS IN $scope.todos -->
 				<div class="checkbox" ng-repeat="pub in pubs">
 					<label>
-						<input type="checkbox" ng-click="deleteTodo(todo._id)"> {{ pub.name }} . {{ pub.game }} . {{ pub.pontuacao }}
+						{{ pub.name }} . {{ pub.game }} . {{ pub.pontuacao }}
 					</label>
 				</div>
 
 			</div>
 		</div>
-
-		<!-- FORM TO CREATE TODOS -->
-		<div id="todo-form" class="row">
-			<div class="col-sm-8 col-sm-offset-2 text-center">
-				<form>
-					<div class="form-group">
-
-						<!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
-						<input type="text" class="form-control input-lg text-center" placeholder="I want to buy a puppy that will love me forever" ng-model="formData.name">
-					</div>
-
-					<!-- createToDo() WILL CREATE NEW TODOS -->
-					<button type="submit" class="btn btn-primary btn-lg" ng-click="createTodo()">Add</button>
-				</form>
-			</div>
-		</div>
-
-	</div>
 
 </body>
 </html>
