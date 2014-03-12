@@ -1,2 +1,2 @@
 # istim-ranking
-### a Sails application
+### a Sails application istim-ranking.jit.su
