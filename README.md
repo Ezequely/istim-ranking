@@ -1,2 +1,13 @@
 # istim-ranking
-### a Sails application
+
+## Services
+### Rank
+	- Show ranking
+	- Update ranking
+
+## Dependencies
+### Game API
+	- Games avaliable
+
+### User API
+	- Authentication
