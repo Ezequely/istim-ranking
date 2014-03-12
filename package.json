@@ -1,7 +1,7 @@
 {
-    "name": "istim-ranking",
+    "name": "tests-istim-ranking",
     "private": true,
-    "version": "0.0.0-12",
+    "version": "0.0.0-13",
     "description": "a Sails application",
     "dependencies": {
         "sails": "0.9.11",
@@ -18,7 +18,7 @@
     "repository": "",
     "author": "",
     "license": "",
-    "subdomain": "istim-ranking",
+    "subdomain": "tests-istim-ranking",
     "engines": {
         "node": "0.10.x"
     }

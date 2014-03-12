@@ -26,17 +26,17 @@
                     </thead>
                     <tbody>
                         <tr ng-repeat="rank in ranks">
-                            <td width="100">{{rank.userId}}</td>
-                            <td width="100">{{rank.game}}</td>
-                            <td width="100">{{rank.point}}</td>
-                            <td width="100">
+                            <td>{{rank.userId}}</td>
+                            <td>{{rank.game}}</td>
+                            <td>{{rank.point}}</td>
+                            <td>
                                 <button type="button" class="btn btn-default" ng-click="updateRank(rank.userId)">Atualizar</button></td>
-                            <td width="100">
+                            <td>
                                 <button type="button" class="btn btn-default" ng-click="deleteRank(rank.userId)">Deletar</button></td>
-                            <td width="100">
+                            <td>
                                 <button type="button" class="btn btn-default" ng-click="debitRank(rank.userId)">Debitar</button>
                             </td>
-                            <td width="100">
+                            <td>
                                 <button type="button" class="btn btn-default" ng-click="creditRank(rank.userId)">Creditar</button>
                             </td>
                         </tr>
