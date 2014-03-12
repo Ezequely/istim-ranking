@@ -1,5 +1,5 @@
 /**
- * Rank
+ * Friends
  *
  * @module      :: Model
  * @description :: A short summary of how this model works and what it represents.
@@ -15,6 +15,10 @@ module.exports = {
   	userId: {
   		type: 'integer'
   	},
+  	
+  	friendId: {
+  		type: 'string'
+  	},
 
   	game: {
   		type: 'string'
@@ -22,12 +26,12 @@ module.exports = {
 
   	point: {
   		type: 'integer'
-  	}
+  	},
 
-    /*toJSON: function(){
+    toJSON: function(){
       var obj = this.toObject();
       return obj;
-    }*/
+    }
   }
 
 };

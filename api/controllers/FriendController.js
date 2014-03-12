@@ -1,5 +1,5 @@
 /**
- * RankController
+ * FriendController
  *
  * @module      :: Controller
  * @description	:: A set of functions called `actions`.
@@ -23,19 +23,19 @@ module.exports = {
     var point = parseInt(req.param("point"));
     //if (req.session.user) {
       if (!user) return res.send(400, {error: 'Parameter \'userId\' Missing'});
-      Rank.findOneByUserId(/*req.session.user.id*/user).done(function(err, rank){
+      Friend.findOneByUserId(/*req.session.user.id*/user).done(function(err, friend){
         if (err) return res.send(500, {error: 'DB Error'});
-        if (rank) return res.send(400, {error: 'Ja existe rank para este userId'});
-        if (!rank) {
-          Rank.create({userId: user, game: game, point: point}).done(function (err, rank) {
+        if (friend) return res.send(400, {error: 'Ja existe friend para este userId'});
+        if (!friend) {
+          Friend.create({userId: user, game: game, point: point}).done(function (err, friend) {
             if (err) return res.send(500, {error: 'Error Save Object'});
-            res.send(200,rank);
+            res.send(200,friend);
           });
           
         } else {
-          Rank.create({userId: user, game: game, point: point}).done(function(err, rank) {
+          Friend.create({userId: user, game: game, point: point}).done(function(err, friend) {
             if (err) return res.send(500, {error: 'Error Save Object'});
-            res.send(200,rank);
+            res.send(200,friend);
           });
           
         }
@@ -46,9 +46,9 @@ module.exports = {
 show: function(req, res) {
     var user = parseInt(req.param("userId"));
       if (!user) return res.send(400, {error: 'Parameter \'userId\' Missing'});
-      Rank.findOneByUserId(/*req.session.user.id*/user).done(function(err, rank){
+      Friend.findOneByUserId(/*req.session.user.id*/user).done(function(err, friend){
         if (err) return res.send(500, {error: 'DB Error'});
-        if (rank) return res.send(200,rank);
+        if (friend) return res.send(200,friend);
         else return res.send(404, {error: 'User Not Found'});
       });
     },
@@ -57,12 +57,12 @@ show: function(req, res) {
     var user = parseInt(req.param("userId"));
     //if (req.session.user) {
       if (!user) return res.send(400, {error: 'Parameter \'userId\' Missing'});
-      Rank.findOneByUserId(/*req.session.user.id*/user).done(function(err, rank) {
+      Friend.findOneByUserId(/*req.session.user.id*/user).done(function(err, friend) {
         if (err) return res.send(500, {error: 'DB Error'});
-        if (!rank) return res.send(404, {error: 'User Not Found'});
-        rank.destroy(function(err){
+        if (!friend) return res.send(404, {error: 'User Not Found'});
+        friend.destroy(function(err){
           if (err) return res.send(500, {error: 'Error Destroy Object'});
-          res.send(200,rank);
+          res.send(200,friend);
         });
       });
     //}
@@ -77,29 +77,29 @@ show: function(req, res) {
 
     if(newuser) {
 
-    Rank.findOneByUserId(newuser).done(function (err, rank) {
-        if (rank) {
+    Friend.findOneByUserId(newuser).done(function (err, friend) {
+        if (friend) {
          user = newuser;
-        return res.send(400, {error: 'User Already Rank Created'});
+        return res.send(400, {error: 'User Already Friend Created'});
       }
     });
    }
    
-    Rank.findOneByUserId(user).done(function (err, rank) {
+    Friend.findOneByUserId(user).done(function (err, friend) {
       
       if (err) return res.send(500, {error: 'DB Error'});
-      if (!rank) return res.send(404, {error: 'User Not Found'});
+      if (!friend) return res.send(404, {error: 'User Not Found'});
       if (point && !newuser) {
-        rank.point = point;
+        friend.point = point;
       } else if (newuser && !point) {
         point.userId = newuser;
       } else if (point && newuser) {
-        rank.userId = newuser;
-        rank.point = point;
+        friend.userId = newuser;
+        friend.point = point;
       }
-      rank.save(function(err){
+      friend.save(function(err){
         if (err) return res.send(500, {error: 'Error Save Object'});
-        res.send(200, rank);
+        res.send(200, friend);
       });
     });
   },
@@ -111,15 +111,15 @@ show: function(req, res) {
     //if (req.session.user) {
       if (!user) return res.send(400,{error: 'Parameter \'userId\' Missing'});
       if (!point) return res.send(400,{error: 'Parameter \'point\' Missing'});
-      Rank.findOneByUserId(/*req.session.user.id*/user).done(function(err, rank){
+      Friend.findOneByUserId(/*req.session.user.id*/user).done(function(err, friend){
         if (err) return res.send(500, {error: 'DB Error'});
-        if (!rank) return res.send(404,{ error: 'User Not Found'});
-        if (rank.point >= point){
-          rank.point -= point;
-          rank.save(function(err) {
+        if (!friend) return res.send(404,{ error: 'User Not Found'});
+        if (friend.point >= point){
+          friend.point -= point;
+          friend.save(function(err) {
             if (err) return res.send(500,{error: 'Error Save Object'});
           });
-          return res.send(200,rank);
+          return res.send(200,friend);
         }
         return res.send(200,{error: 'Point Insufficient'});
       });
@@ -133,17 +133,17 @@ show: function(req, res) {
      //if (req.session.user) {
       if (!user) return res.send(400,{error: 'Parameter \'userId\' Missing'});
       if (!point) return res.send(400,{error: 'Parameter \'point\' Missing'});
-      Rank.findOneByUserId(/*req.session.user.id*/user).done(function(err, rank){
+      Friend.findOneByUserId(/*req.session.user.id*/user).done(function(err, friend){
         if (err) return res.send(500, {error: 'DB Error'});
-        if (!rank) return res.send(404,{ error: 'User Not Found'});
+        if (!friend) return res.send(404,{ error: 'User Not Found'});
         if (point >= 0){
-          rank.point += point;
+          friend.point += point;
           point.save(function(err) {
             if (err) return res.send(500,{error: 'Error Save Object'});
           });
-          return res.send(200,rank);
+          return res.send(200,friend);
         }
-        return res.send(200,{error: 'Rank Value Invalid'});
+        return res.send(200,{error: 'Friend Value Invalid'});
       });
     //}
   },

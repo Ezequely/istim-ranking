@@ -148,7 +148,7 @@ module.exports.controllers = {
    *
    * Defaults to false.
    */
-  jsonp: true,
+  jsonp: false,
 
 
 
