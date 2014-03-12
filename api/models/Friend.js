@@ -28,7 +28,7 @@ module.exports = {
   		type: 'integer'
   	},
 
-    toJSON: function(){
+     toJSON: function(){
       var obj = this.toObject();
       return obj;
     }

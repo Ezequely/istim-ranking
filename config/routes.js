@@ -34,6 +34,36 @@ module.exports.routes = {
   // (This would also work if you had a file at: `/views/home.ejs`)
   '/': {
     view: 'home/index'
+  },
+  
+  '/debit' : {
+    controller: 'rank',
+    action: 'debit'
+  },
+
+  '/credit' : {
+    controller: 'rank',
+    action: 'credit'
+  },
+
+ '/create' : {
+    controller: 'rank',
+    action: 'create'
+  },
+
+  '/destroy' : {
+    controller: 'rank',
+    action: 'destroy'
+  },
+
+  '/update' : {
+    controller: 'rank',
+    action: 'update'
+  },
+
+  '/show' : {
+    controller: 'rank',
+    action: 'show'
   }
 
   /*
