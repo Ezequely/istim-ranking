@@ -5,7 +5,7 @@
     <body ng-controller='mainController'>
         <div class="container">
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <div class="alert alert-info" ng-if="ranks.length == 0">
                         Nenhum Ranking Encontrado!!
                     </div>
@@ -26,24 +26,24 @@
                     </thead>
                     <tbody>
                         <tr ng-repeat="rank in ranks">
-                            <td width="100">{{rank.userId}}</td>
-                            <td width="100">{{rank.game}}</td>
-                            <td width="100">{{rank.point}}</td>
-                            <td width="100">
+                            <td>{{rank.userId}}</td>
+                            <td>{{rank.game}}</td>
+                            <td>{{rank.point}}</td>
+                            <td>
                                 <button type="button" class="btn btn-default" ng-click="updateRank(rank.userId)">Atualizar</button></td>
-                            <td width="100">
+                            <td>
                                 <button type="button" class="btn btn-default" ng-click="deleteRank(rank.userId)">Deletar</button></td>
-                            <td width="100">
+                            <td>
                                 <button type="button" class="btn btn-default" ng-click="debitRank(rank.userId)">Debitar</button>
                             </td>
-                            <td width="100">
+                            <td>
                                 <button type="button" class="btn btn-default" ng-click="creditRank(rank.userId)">Creditar</button>
                             </td>
                         </tr>
                     </tbody>
                 </table>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <form role="form">
                         <div class="form-group">
                             <label for="inputUserId">Usuário</label>
