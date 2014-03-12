@@ -5,9 +5,9 @@
     <body ng-controller='mainController'>
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="alert alert-info" ng-if="ranks.length == 0">
-                        Nenhum cadastro!!
+                        Nenhum Ranking Encontrado!!
                     </div>
                     <div class="alert alert-info" ng-if="erro">
                         {{erro}}
@@ -16,6 +16,7 @@
                     <thead>
                         <tr>
                             <th>Usuário</th>
+                            <th>Game</th>
                             <th>Pontuação</th>
                             <th></th>
                             <th></th>
@@ -25,31 +26,36 @@
                     </thead>
                     <tbody>
                         <tr ng-repeat="rank in ranks">
-                            <td>{{rank.userId}}</td>
-                            <td>{{rank.point}}</td>
-                            <td>
+                            <td width="100">{{rank.userId}}</td>
+                            <td width="100">{{rank.game}}</td>
+                            <td width="100">{{rank.point}}</td>
+                            <td width="100">
                                 <button type="button" class="btn btn-default" ng-click="updateRank(rank.userId)">Atualizar</button></td>
-                            <td>
+                            <td width="100">
                                 <button type="button" class="btn btn-default" ng-click="deleteRank(rank.userId)">Deletar</button></td>
-                            <td>
+                            <td width="100">
                                 <button type="button" class="btn btn-default" ng-click="debitRank(rank.userId)">Debitar</button>
                             </td>
-                            <td>
+                            <td width="100">
                                 <button type="button" class="btn btn-default" ng-click="creditRank(rank.userId)">Creditar</button>
                             </td>
                         </tr>
                     </tbody>
                 </table>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <form role="form">
                         <div class="form-group">
                             <label for="inputUserId">Usuário</label>
                             <input type="text" class="form-control" id="inputUserId" placeholder="parâmetro userId" ng-model="formData.userId">
                         </div>
                         <div class="form-group">
+                            <label for="inputUserId">Game</label>
+                            <input type="text" class="form-control" id="inputGame" placeholder="parâmetro game" ng-model="formData.game">
+                        </div>
+                        <div class="form-group">
                             <label for="inputCash">Pontuacao</label>
-                            <input type="text" class="form-control" id="inputCash" placeholder="parâmetro Pontuacao" ng-model="formData.point">
+                            <input type="text" class="form-control" id="inputPoint" placeholder="parâmetro Pontuacao" ng-model="formData.point">
                         </div>
                         <div class="form-group">
                             <label for="inputNewUser">Atualizar Usuário</label>
