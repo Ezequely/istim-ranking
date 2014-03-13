@@ -1,7 +1,11 @@
 {
     "name": "istim-ranking",
     "private": true,
+<<<<<<< HEAD
     "version": "0.0.0-4",
+=======
+    "version": "0.0.0-24",
+>>>>>>> 8476547c998c7c331cca8b8084493b161430f7ab
     "description": "a Sails application",
     "dependencies": {
         "sails": "0.9.11",
@@ -18,6 +22,15 @@
     "repository": "",
     "author": "",
     "license": "",
+<<<<<<< HEAD
+=======
+    "devDependencies": {
+    "supertest": "^0.9.0",
+    "mocha": "^1.17.1",
+    "should": "^3.1.3",
+    "assert": "^1.1.1"
+  },
+>>>>>>> 8476547c998c7c331cca8b8084493b161430f7ab
     "subdomain": "istim-ranking",
     "engines": {
         "node": "0.10.x"

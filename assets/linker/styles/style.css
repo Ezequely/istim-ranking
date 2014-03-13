@@ -4,6 +4,11 @@ div.header-mac{
 	margin-bottom: 10px;
 	font-size: 24px;
 	text-align: center;
+<<<<<<< HEAD
 	background-color: #6f5499;
 	color: white;
+=======
+	background-color: #FFFF33;
+	color: black;
+>>>>>>> 8476547c998c7c331cca8b8084493b161430f7ab
 }
