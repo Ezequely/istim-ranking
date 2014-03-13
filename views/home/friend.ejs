@@ -1,12 +1,12 @@
-<html ng-app='rank-page'>
+<html ng-app='friend-page'>
     <head>
         <meta charset="utf-8">
     </head>
-    <body ng-controller='mainController'>
+    <body ng-controller='friendController'>
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
-                    <div class="alert alert-info" ng-if="ranks.length == 0">
+                <div class="col-md-4">
+                    <div class="alert alert-info" ng-if="friends.length == 0">
                         Nenhum Ranking Encontrado!!
                     </div>
                     <div class="alert alert-info" ng-if="erro">
@@ -16,38 +16,36 @@
                     <thead>
                         <tr>
                             <th>Usuário</th>
+                            <th>Friend</th>
                             <th>Game</th>
                             <th>Pontuação</th>
-                            <th></th>
-                            <th></th>
                             <th></th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="rank in ranks">
-                            <td>{{rank.userId}}</td>
-                            <td>{{rank.game}}</td>
-                            <td>{{rank.point}}</td>
+                        <tr ng-repeat="friend in friends">
+                            <td>{{friend.userId}}</td>
+                            <td>{{friend.friendId}}</td>
+                            <td>{{friend.game}}</td>
+                            <td>{{friend.point}}</td>
                             <td>
-                                <button type="button" class="btn btn-default" ng-click="updateRank(rank.userId)">Atualizar</button></td>
+                                <button type="button" class="btn btn-default" ng-click="updateFriend(friend.userId)">Atualizar</button></td>
                             <td>
-                                <button type="button" class="btn btn-default" ng-click="deleteRank(rank.userId)">Deletar</button></td>
-                            <td>
-                                <button type="button" class="btn btn-default" ng-click="debitRank(rank.userId)">Debitar</button>
-                            </td>
-                            <td>
-                                <button type="button" class="btn btn-default" ng-click="creditRank(rank.userId)">Creditar</button>
-                            </td>
+                                <button type="button" class="btn btn-default" ng-click="deleteFriend(friend.userId)">Deletar</button></td>
                         </tr>
                     </tbody>
                 </table>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <form role="form">
                         <div class="form-group">
                             <label for="inputUserId">Usuário</label>
                             <input type="text" class="form-control" id="inputUserId" placeholder="parâmetro userId" ng-model="formData.userId">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputUserId">Friends</label>
+                            <input type="text" class="form-control" id="inputFriend" placeholder="parâmetro friend" ng-model="formData.friendId">
                         </div>
                         <div class="form-group">
                             <label for="inputUserId">Game</label>
@@ -59,11 +57,11 @@
                         </div>
                         <div class="form-group">
                             <label for="inputNewUser">Atualizar Usuário</label>
-                            <input type="text" class="form-control" id="inputNewUser" placeholder="parâmetro newUser" ng-model="formData.newUser">
+                            <input type="text" class="form-control" id="inputNewFriend" placeholder="parâmetro newUser" ng-model="formData.newUser">
                         </div>
                         <div class="btn-group btn-group-justified">
                         <div class="btn-group">
-                            <button type="button" class="btn btn-default" ng-click="createRank()">Adicionar</button>
+                            <button type="button" class="btn btn-default" ng-click="createFriend()">Adicionar</button>
                         </div>
                         </div>
                     </form>
