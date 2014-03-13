@@ -15,3 +15,24 @@ before(function(done) {
      });
 
 });
+
+var supertest = require("supertest")
+var assert = require("assert");
+var should = require("should");
+
+describe('when requesting create on api only by passing userId', function () {
+
+    it ('should create an object at Model Rank with the userId given and its point should be 0', function (done) {
+      supertest(sails.express.app)
+        .get('/Rank/create?userId=nDummyObject')
+        .expect('Content-Type', /json/)
+        .expect(200)
+        .end(function(err, res) {
+          Rank.findOneByUserId("nDummyObject").done(function(err, coin) {
+          assert.equal(coin.userId, "nDummyObject");
+          assert.equal(coin.point, 0);
+          done();          
+        })
+      })
+    })
+  })
