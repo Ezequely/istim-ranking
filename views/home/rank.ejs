@@ -1,0 +1,66 @@
+<html ng-app='rank-page'>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body ng-controller='rankController'>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="alert alert-info" ng-if="ranks.length == 0">
+                        Nenhum Ranking Encontrado!!
+                    </div>
+                    <div class="alert alert-info" ng-if="erro">
+                        {{erro}}
+                    </div>
+                    <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Usuário</th>
+                            <th>Game</th>
+                            <th>Pontuação</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="rank in ranks">
+                            <td>{{rank.userId}}</td>
+                            <td>{{rank.game}}</td>
+                            <td>{{rank.point}}</td>
+                            <td>
+                                <button type="button" class="btn btn-default" ng-click="updateRank(rank.userId)">Atualizar</button></td>
+                            <td>
+                                <button type="button" class="btn btn-default" ng-click="deleteRank(rank.userId)">Deletar</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+                <div class="col-md-6">
+                    <form role="form">
+                        <div class="form-group">
+                            <label for="inputUserId">Usuário</label>
+                            <input type="text" class="form-control" id="inputUserId" placeholder="parâmetro userId" ng-model="formData.userId">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputUserId">Game</label>
+                            <input type="text" class="form-control" id="inputGame" placeholder="parâmetro game" ng-model="formData.game">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputCash">Pontuacao</label>
+                            <input type="text" class="form-control" id="inputPoint" placeholder="parâmetro Pontuacao" ng-model="formData.point">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputNewUser">Atualizar Usuário</label>
+                            <input type="text" class="form-control" id="inputNewUser" placeholder="parâmetro newUser" ng-model="formData.newUser">
+                        </div>
+                        <div class="btn-group btn-group-justified">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-default" ng-click="createRank()">Adicionar</button>
+                        </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
