@@ -17,11 +17,11 @@ describe('Routing', function() {
 
   describe('API - No errors path', function() {
 
-    it('should return status 201 after CREATING a rank', function(done) {
+    it('should return status 200 after CREATING a rank', function(done) {
       request(url)
         .post('/rank/create')
         .send(rank)
-        .expect(201)
+        .expect(200)
         .end(function(err, res) {
             if (err) {
               throw err;
