@@ -1,4 +1,5 @@
 # istim-ranking
+[![Build Status](https://travis-ci.org/istim/istim-ranking.png?branch=master)](https://travis-ci.org/istim/istim-ranking)
 ### a Sails application istim-ranking.jit.su
 
 ## Services
