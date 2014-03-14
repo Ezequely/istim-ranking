@@ -1,5 +1,6 @@
 before_script:
   - npm install -g mocha
+  - npm install -g supertest
   - sails lift&
 language: node_js
 node_js:
