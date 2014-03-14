@@ -12,17 +12,17 @@ module.exports = {
 
   attributes: {
 
-  	userId: {
-  		type: 'integer'
-  	},
+    userId: {
+      type: 'integer'
+    },
 
-  	game: {
-  		type: 'string'
-  	},
+    game: {
+      type: 'string'
+    },
 
-  	point: {
-  		type: 'integer'
-  	}
+    point: {
+      type: 'integer'
+    }
 
     /*toJSON: function(){
       var obj = this.toObject();
