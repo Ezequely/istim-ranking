@@ -16,9 +16,8 @@
                     <thead>
                         <tr>
                             <th>Usuário</th>
+                            <th>Game</th>
                             <th>Pontuação</th>
-                            <th></th>
-                            <th></th>
                             <th></th>
                             <th></th>
                         </tr>
@@ -26,17 +25,12 @@
                     <tbody>
                         <tr ng-repeat="rank in ranks">
                             <td>{{rank.userId}}</td>
+                            <td>{{rank.game}}</td>
                             <td>{{rank.point}}</td>
                             <td>
                                 <button type="button" class="btn btn-default" ng-click="updateRank(rank.userId)">Atualizar</button></td>
                             <td>
                                 <button type="button" class="btn btn-default" ng-click="deleteRank(rank.userId)">Deletar</button></td>
-                            <td>
-                                <button type="button" class="btn btn-default" ng-click="debitRank(rank.userId)">Debitar</button>
-                            </td>
-                            <td>
-                                <button type="button" class="btn btn-default" ng-click="creditRank(rank.userId)">Creditar</button>
-                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -48,8 +42,12 @@
                             <input type="text" class="form-control" id="inputUserId" placeholder="parâmetro userId" ng-model="formData.userId">
                         </div>
                         <div class="form-group">
+                            <label for="inputCash">Game</label>
+                            <input type="text" class="form-control" id="inputGame" placeholder="parâmetro Game" ng-model="formData.game">
+                        </div>
+                        <div class="form-group">
                             <label for="inputCash">Pontuacao</label>
-                            <input type="text" class="form-control" id="inputCash" placeholder="parâmetro Pontuacao" ng-model="formData.point">
+                            <input type="text" class="form-control" id="inputPoint" placeholder="parâmetro Pontuacao" ng-model="formData.point">
                         </div>
                         <div class="form-group">
                             <label for="inputNewUser">Atualizar Usuário</label>

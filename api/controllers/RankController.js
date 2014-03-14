@@ -102,7 +102,51 @@ show: function(req, res) {
         res.send(200, rank);
       });
     });
-  },''
+  },
+
+  debit: function(req, res) {
+    var user = parseInt(req.param("userId"));
+    var game = req.param("game");
+    var point = parseInt(req.param("point"));
+    //if (req.session.user) {
+      if (!user) return res.send(400,{error: 'Parameter \'userId\' Missing'});
+      if (!point) return res.send(400,{error: 'Parameter \'point\' Missing'});
+      Rank.findOneByUserId(/*req.session.user.id*/user).done(function(err, rank){
+        if (err) return res.send(500, {error: 'DB Error'});
+        if (!rank) return res.send(404,{ error: 'User Not Found'});
+        if (rank.point >= point){
+          rank.point -= point;
+          rank.save(function(err) {
+            if (err) return res.send(500,{error: 'Error Save Object'});
+          });
+          return res.send(200,rank);
+        }
+        return res.send(200,{error: 'Point Insufficient'});
+      });
+    //}
+  },
+
+  credit: function(req, res) {
+    var user = parseInt(req.param("userId"));
+    var game = req.param("game");
+    var point = parseInt(req.param("point"));
+     //if (req.session.user) {
+      if (!user) return res.send(400,{error: 'Parameter \'userId\' Missing'});
+      if (!point) return res.send(400,{error: 'Parameter \'point\' Missing'});
+      Rank.findOneByUserId(/*req.session.user.id*/user).done(function(err, rank){
+        if (err) return res.send(500, {error: 'DB Error'});
+        if (!rank) return res.send(404,{ error: 'User Not Found'});
+        if (point >= 0){
+          rank.point += point;
+          point.save(function(err) {
+            if (err) return res.send(500,{error: 'Error Save Object'});
+          });
+          return res.send(200,rank);
+        }
+        return res.send(200,{error: 'Rank Value Invalid'});
+      });
+    //}
+  },
 
   _config: {}
 

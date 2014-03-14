@@ -22,21 +22,12 @@ module.exports = {
 
   	point: {
   		type: 'integer'
-<<<<<<< HEAD
   	}
 
     /*toJSON: function(){
       var obj = this.toObject();
       return obj;
     }*/
-=======
-  	},
-
-    toJSON: function(){
-      var obj = this.toObject();
-      return obj;
-    }
->>>>>>> 8476547c998c7c331cca8b8084493b161430f7ab
   }
 
 };
