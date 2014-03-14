@@ -19,6 +19,12 @@
     "repository": "",
     "author": "",
     "license": "",
+     "devDependencies": {
+    "supertest": "^0.9.0",
+    "mocha": "^1.17.1",
+    "should": "^3.1.3",
+    "assert": "^1.1.1"
+    },
     "subdomain": "istim-ranking",
     "engines": {
         "node": "0.10.x"
