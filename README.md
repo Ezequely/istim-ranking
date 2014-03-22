@@ -11,21 +11,17 @@ Rank API for Istim plataform
 
 ## Services
 ### Rank
-  - Create
-  Create a new object in model Rank
-  How to use:
+  - CREATE
+  - Create a new object in model Rank. How to use:
     - create?userId=100&game='2048'&point=20180
-  - Update
-  Update info of an object from userId of the model Rank
-  How to use
+  - UPDATE
+  - Update info of an object from userId of the model Rank. How to use
     - update?userId=100&point=0
-  - Show
-  Show info of an object from userId of the model Rank
-  How to use:
+  - SH0W
+  - Show info of an object from userId of the model Rank. How to use:
     - show?userId=100
-  - Destroy
-  Destroy an object from userId of the model Rank
-  How to use:
+  - DESTROY
+  - Destroy an object from userId of the model Rank. How to use:
     - destroy?userId=100
 
 ## Dependencies
