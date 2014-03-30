@@ -7,3 +7,6 @@ div.header-mac{
 	background-color: #33CC00;
 	color: white;
 }
+table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):after { 
+    content: " \25B4\25BE" 
+}

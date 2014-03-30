@@ -1,5 +1,7 @@
 var rankPage = angular.module('rank-page', []);
 var url_default = 'http://istim-ranking.nodejitsu.com/rank';
+var url_games = 'http://istim-games.jit.su/game';
+var url_users = 'http://istim-user.jit.su/';
 function mainController($scope, $http) {
   $scope.formData = {};
   $http.get(url_default+'/')

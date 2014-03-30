@@ -13,7 +13,7 @@ module.exports = {
   attributes: {
 
     userId: {
-      type: 'integer'
+      type: 'string'
     },
 
     game: {

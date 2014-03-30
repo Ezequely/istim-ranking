@@ -25,7 +25,6 @@ module.exports = {
       if (!user) return res.send(400, {error: 'Parameter \'userId\' Missing'});
       Rank.findOneByUserId(/*req.session.user.id*/user).done(function(err, rank){
         if (err) return res.send(500, {error: 'DB Error'});
-        if (rank) return res.send(400, {error: 'Ja existe rank para este userId'});
         if (!rank) {
           Rank.create({userId: user, game: game, point: point}).done(function (err, rank) {
             if (err) return res.send(500, {error: 'Error Save Object'});
