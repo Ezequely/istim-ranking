@@ -18,6 +18,12 @@ module.exports.policies = {
   // (`true` allows public access) 
   '*': true
 
+  RankController:{
+  	create : ['isAuthenticated'],
+  	update : ['isAuthenticated'],
+  	destroy : ['isAuthenticated'],
+  }
+
   /*
 	// Here's an example of adding some policies to a controller
 	RabbitController: {

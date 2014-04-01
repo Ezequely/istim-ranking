@@ -10,7 +10,7 @@
 
 
 module.exports = function(req, res, next) {
-
+/*
   var http = require('http');
 
   var params = "email=admin@istimuser.com&password=passadmin";
@@ -35,6 +35,6 @@ module.exports = function(req, res, next) {
 
   post_req.write(params);
   post_req.end();
-
+*/
   return next();
 };
