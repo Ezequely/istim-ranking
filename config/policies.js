@@ -19,9 +19,7 @@ module.exports.policies = {
   '*': true
 
   RankController:{
-  	create : ['isAuthenticated'],
-  	update : ['isAuthenticated'],
-  	destroy : ['isAuthenticated'],
+  	'*': ['isAuthenticated']
   }
 
   /*
