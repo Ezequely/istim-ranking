@@ -7,17 +7,53 @@
  * @docs        :: http://sailsjs.org/#!documentation/policies
  *
  */
-var authenticadedUsers = [0,1,2,3,4];
 
-var authHelper = function(userId){
-  if(authenticadedUsers.indexOf(userId) >= 0)
+var authHelper = function(users, userId){
+  if(users.authenticated == "yes"){
+    console.log("\n\Is AUTH\n\n");
     return true;
-  else
-    return false;
+  }
+  console.log("\n\Is NOT AUTH\n\n");
+  return false;
 }
 
 module.exports = function(req, res, next) {
 
+  var http = require('http');
+  var userId = req.body.userId;
+  var str = '';
+
+  var options = {
+    hostname: 'istim-user.nodejitsu.com',
+    port: 80,
+    path: '/authenticated',
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Content-Length': params.length
+    }
+  };
+
+  var req = http.request(options, function(res) {
+    res.on('data', function (chunk) {
+      str += chunk;
+    });
+
+    res.on('end', function() {
+      var users = JSON.parse(str);
+
+      if(authHelper(users, userId)){
+        return success();
+      }
+      else{
+        return error();
+      }
+    });
+  });
+
+  var success = function() {
+    return next();
+  }
   // User is allowed, proceed to the next policy, 
   // or if this is the last policy, the controller
   // if (req.session.authenticated) {
