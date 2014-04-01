@@ -18,9 +18,9 @@ module.exports.policies = {
   // (`true` allows public access) 
   RankController:{
  	'*': true,
-  	credit: 'isAuthenticated',
-  	debit: 'isAuthenticated',
-  	update: 'isAuthenticated'
+   	create: 'isAuthenticated',
+   	update: 'isAuthenticated',
+  	destroy: 'isAuthenticated'
   }
 
   /*
