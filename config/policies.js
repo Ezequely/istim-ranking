@@ -19,7 +19,10 @@ module.exports.policies = {
   '*': true
 
   RankController:{
-  	'*': ['isAuthenticated']
+ 	'*': true,
+  	credit: 'isAuthenticated',
+  	debit: 'isAuthenticated',
+  	update: 'isAuthenticated'
   }
 
   /*
