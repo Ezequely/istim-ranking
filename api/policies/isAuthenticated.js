@@ -8,20 +8,12 @@
  *
  */
 
-var authHelper = function(users, userId) {
-  if(users.authenticated == "yes"){
-    console.log("\n\Is AUTH\n\n");
-    return true;
-  }
-  console.log("\n\Is NOT AUTH\n\n");
-  return false;
-}
-
 module.exports = function(req, res, next) {
 
   var http = require('http');
   var userId = req.body.userId;
-  var str = '';
+
+  var params = "userId="+userId;
 
   var options = {
     hostname: 'istim-user.nodejitsu.com',
@@ -35,24 +27,32 @@ module.exports = function(req, res, next) {
   };
 
   var req = http.request(options, function(res) {
+    var aux = '';
     res.on('data', function (chunk) {
-      str += chunk;
+      aux += chunk;
     });
 
     res.on('end', function() {
-      var users = JSON.parse(str);
+      var users = JSON.parse(aux);
 
-      if(authHelper(users, userId)){
+      if(users.authenticated == "yes") {
+        console.log("Authenticated");
         return success();
       }
-      else{
+      else {
+        console.log("Unauthenticated");
         return error();
       }
     });
   });
 
-  var success = function() {
+  req.write(params);
+    req.end();
+
+  var success = function(){
     return next();
   }
-  
+  var error = function() {
+    return res.forbidden('You must be logged in to perform this action.');
+  }
 };
