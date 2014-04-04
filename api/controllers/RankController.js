@@ -18,74 +18,64 @@
 module.exports = {
 
   create: function(req, res) {
-    var user = parseInt(req.param("userId"));
+    var user = req.param("userId");
     var game = req.param("game");
     var point = parseInt(req.param("point"));
-    //if (req.session.user) {
-      if (!user) return res.send(400, {error: 'Parameter \'userId\' Missing'});
-      Rank.findOneByUserId(/*req.session.user.id*/user).done(function(err, rank){
-        if (err) return res.send(500, {error: 'DB Error'});
-        if (!rank) {
-          Rank.create({userId: user, game: game, point: point}).done(function (err, rank) {
-            if (err) return res.send(500, {error: 'Error Save Object'});
-            res.send(200,rank);
-          });
-          
-        } else {
-          Rank.create({userId: user, game: game, point: point}).done(function(err, rank) {
-            if (err) return res.send(500, {error: 'Error Save Object'});
-            res.send(200,rank);
-          });
-          
-        }
-      });
-    //}
+    if (!user) return res.send(400, {error: 'Parameter \'userId\' Missing'});
+    Rank.findOneByUserId(user).done(function(err, rank) {
+      if (err) return res.send(500, {error: 'DB Error'});
+      if (!rank) {
+        Rank.create({userId: user, game: game, point: point}).done(function (err, rank) {
+          if (err) return res.send(500, {error: 'Error Save Object'});
+          res.send(200,rank);
+        }); 
+      } else {
+        Rank.create({userId: user, game: game, point: point}).done(function(err, rank) {
+          if (err) return res.send(500, {error: 'Error Save Object'});
+          res.send(200,rank);
+        });   
+      }
+    });
   },
 
-show: function(req, res) {
-    var user = parseInt(req.param("userId"));
-      if (!user) return res.send(400, {error: 'Parameter \'userId\' Missing'});
-      Rank.findOneByUserId(/*req.session.user.id*/user).done(function(err, rank){
-        if (err) return res.send(500, {error: 'DB Error'});
-        if (rank) return res.send(200,rank);
-        else return res.send(404, {error: 'User Not Found'});
-      });
-    },
+  show: function(req, res) {
+    var user = req.param("userId");
+    if (!user) return res.send(400, {error: 'Parameter \'userId\' Missing'});
+    Rank.findOneByUserId(user).done(function(err, rank) {
+      if (err) return res.send(500, {error: 'DB Error'});
+      if (rank) return res.send(200,rank);
+      else return res.send(404, {error: 'User Not Found'});
+    });
+  },
 
   destroy: function(req, res) {
-    var user = parseInt(req.param("userId"));
-    //if (req.session.user) {
-      if (!user) return res.send(400, {error: 'Parameter \'userId\' Missing'});
-      Rank.findOneByUserId(/*req.session.user.id*/user).done(function(err, rank) {
-        if (err) return res.send(500, {error: 'DB Error'});
-        if (!rank) return res.send(404, {error: 'User Not Found'});
-        rank.destroy(function(err){
-          if (err) return res.send(500, {error: 'Error Destroy Object'});
-          res.send(200,rank);
-        });
+    var user = req.param("userId");
+    if (!user) return res.send(400, {error: 'Parameter \'userId\' Missing'});
+    Rank.findOneByUserId(user).done(function(err, rank) {
+      if (err) return res.send(500, {error: 'DB Error'});
+      if (!rank) return res.send(404, {error: 'User Not Found'});
+      rank.destroy(function(err){
+        if (err) return res.send(500, {error: 'Error Destroy Object'});
+        res.send(200,rank);
       });
-    //}
+    });
   },
 
   update: function(req, res) {
-    var user = parseInt(req.param("userId"));
+    var user = req.param("userId");
     var game = req.param("game");
     var point = parseInt(req.param("point"));
     var newuser = req.param("newUser");
     if (!user) return res.send(400, {error: 'Parameter \'userId\' Missing'});
-
     if(newuser) {
-
-    Rank.findOneByUserId(newuser).done(function (err, rank) {
+      Rank.findOneByUserId(newuser).done(function (err, rank) {
         if (rank) {
-         user = newuser;
-        return res.send(400, {error: 'User Already Rank Created'});
-      }
-    });
-   }
-   
+          user = newuser;
+          return res.send(400, {error: 'User Already Rank Created'});
+        }
+      });
+    }
     Rank.findOneByUserId(user).done(function (err, rank) {
-      
       if (err) return res.send(500, {error: 'DB Error'});
       if (!rank) return res.send(404, {error: 'User Not Found'});
       if (point && !newuser) {
@@ -96,57 +86,47 @@ show: function(req, res) {
         rank.userId = newuser;
         rank.point = point;
       }
-      rank.save(function(err){
+      rank.save(function(err) {
         if (err) return res.send(500, {error: 'Error Save Object'});
         res.send(200, rank);
       });
     });
   },
 
-  debit: function(req, res) {
-    var user = parseInt(req.param("userId"));
+  increase: function(req, res) {
+    var user = req.param("userId");
     var game = req.param("game");
     var point = parseInt(req.param("point"));
-    //if (req.session.user) {
-      if (!user) return res.send(400,{error: 'Parameter \'userId\' Missing'});
-      if (!point) return res.send(400,{error: 'Parameter \'point\' Missing'});
-      Rank.findOneByUserId(/*req.session.user.id*/user).done(function(err, rank){
-        if (err) return res.send(500, {error: 'DB Error'});
-        if (!rank) return res.send(404,{ error: 'User Not Found'});
-        if (rank.point >= point){
-          rank.point -= point;
-          rank.save(function(err) {
-            if (err) return res.send(500,{error: 'Error Save Object'});
-          });
-          return res.send(200,rank);
-        }
-        return res.send(200,{error: 'Point Insufficient'});
-      });
-    //}
+    Rank.findOneByUserId(user).done(function(err, rank) {
+      if (err) return res.send(500, {error: 'DB Error'});
+      if (!rank) return res.send(404, {error: 'User Not Found'});
+      if (point >= 0) {
+        rank.point += point;
+        point.save(function(err) {
+          if (err) return res.send(500, {error: 'Error Save Object'});
+        });
+        return res.send(200,rank);
+      }
+      return res.send(200,{error: 'Rank Value Invalid'});
+    });
   },
 
-  credit: function(req, res) {
-    var user = parseInt(req.param("userId"));
+  decrease: function(req, res) {
+    var user = req.param("userId");
     var game = req.param("game");
     var point = parseInt(req.param("point"));
-     //if (req.session.user) {
-      if (!user) return res.send(400,{error: 'Parameter \'userId\' Missing'});
-      if (!point) return res.send(400,{error: 'Parameter \'point\' Missing'});
-      Rank.findOneByUserId(/*req.session.user.id*/user).done(function(err, rank){
-        if (err) return res.send(500, {error: 'DB Error'});
-        if (!rank) return res.send(404,{ error: 'User Not Found'});
-        if (point >= 0){
-          rank.point += point;
-          point.save(function(err) {
-            if (err) return res.send(500,{error: 'Error Save Object'});
-          });
-          return res.send(200,rank);
-        }
-        return res.send(200,{error: 'Rank Value Invalid'});
-      });
-    //}
+    Rank.findOneByUserId(user).done(function(err, rank) {
+      if (err) return res.send(500, {error: 'DB Error'});
+      if (!rank) return res.send(404,{ error: 'User Not Found'});
+      if (rank.point >= point){
+        rank.point -= point;
+        rank.save(function(err) {
+          if (err) return res.send(500,{error: 'Error Save Object'});
+        });
+        return res.send(200,rank);
+      }
+      return res.send(200,{error: 'Point Insufficient'});
+    });
   },
-
-  _config: {}
 
 };

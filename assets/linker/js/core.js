@@ -1,5 +1,5 @@
 var rankPage = angular.module('rank-page', []);
-var url_default = 'http://istim-ranking.nodejitsu.com/rank';
+var url_default = 'http://localhost:1337/rank';
 var url_games = 'http://istim-games.jit.su/game';
 var url_users = 'http://istim-user.jit.su/';
 function mainController($scope, $http) {
@@ -47,8 +47,8 @@ function mainController($scope, $http) {
       });
   };
 
-  $scope.debitRank = function(userId) {
-    var url = url_default+'/debit?userId='+userId+'&rank='+$scope.formData.rank;
+  $scope.increaseRank = function(userId) {
+    var url = url_default+'/credit?userId='+userId+'&rank='+$scope.formData.rank;
     $http.post(url)
       .success(function(data){
         $scope.formData = {};
@@ -58,8 +58,8 @@ function mainController($scope, $http) {
       });
   };
 
-  $scope.creditRank = function(userId) {
-    var url = url_default+'/credit?userId='+userId+'&rank='+$scope.formData.rank;
+  $scope.decreaseRank = function(userId) {
+    var url = url_default+'/debit?userId='+userId+'&rank='+$scope.formData.rank;
     $http.post(url)
       .success(function(data){
         $scope.formData = {};
